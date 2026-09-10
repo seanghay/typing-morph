@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { Pause, Play, Ruler } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ConsonantTable } from '../components/ConsonantTable'
 import { Controls } from '../components/Controls'
 import { Stage } from '../components/Stage'
 import { TextField } from '../components/TextField'
@@ -56,7 +57,7 @@ function useTypewriter(text) {
 }
 
 export default function Morph() {
-  const { hb, text, options, spring } = useShaping()
+  const { hb, text, setText, options, spring } = useShaping()
   const [showMetrics, setShowMetrics] = useState(true)
   const [highlight, setHighlight] = useState(null)
 
@@ -143,6 +144,12 @@ export default function Morph() {
           ) : (
             <p className="text-sm text-faint">No glyphs.</p>
           )}
+        </Panel>
+        <Panel title="Khmer consonants">
+          <ConsonantTable selected={text} onPick={setText} />
+          <p className="mt-3 text-xs text-muted">
+            Each pair is the same sound in the two series, first series then second series.
+          </p>
         </Panel>
       </div>
 

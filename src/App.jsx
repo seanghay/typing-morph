@@ -1,8 +1,7 @@
 import clsx from 'clsx'
-import { Layers, LayoutGrid, Table2, Type, Wand2 } from 'lucide-react'
+import { Layers, Table2, Type, Wand2 } from 'lucide-react'
 import { Navigate, NavLink, Route, Routes } from 'react-router'
 import { ShapingProvider, useShaping } from './lib/store'
-import Consonants from './routes/Consonants'
 import Inspect from './routes/Inspect'
 import Morph from './routes/Morph'
 import Normalize from './routes/Normalize'
@@ -13,12 +12,11 @@ const TABS = [
   { to: '/pipeline', label: 'Pipeline', icon: Layers },
   { to: '/normalize', label: 'Normalize', icon: Wand2 },
   { to: '/inspect', label: 'Inspect', icon: Table2 },
-  { to: '/consonants', label: 'Table', icon: LayoutGrid },
 ]
 
 function Header() {
   return (
-    <header className="sticky top-0 z-10 border-b border-line bg-white/85 backdrop-blur">
+    <header className="sticky top-0 z-10 bg-white/85 backdrop-blur">
       <div className="mx-auto flex h-10 max-w-7xl items-center gap-5 px-6">
         <span className="text-xs font-bold tracking-tight">Typing Morph</span>
         <nav className="flex items-center gap-0.5">
@@ -65,7 +63,6 @@ function Shell() {
             <Route path="/pipeline" element={<Pipeline />} />
             <Route path="/normalize" element={<Normalize />} />
             <Route path="/inspect" element={<Inspect />} />
-            <Route path="/consonants" element={<Consonants />} />
             <Route path="*" element={<Navigate to="/morph" replace />} />
           </Routes>
         ) : (
