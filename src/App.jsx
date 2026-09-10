@@ -1,7 +1,8 @@
 import clsx from 'clsx'
-import { Layers, Table2, Type, Wand2 } from 'lucide-react'
+import { Layers, LayoutGrid, Table2, Type, Wand2 } from 'lucide-react'
 import { Navigate, NavLink, Route, Routes } from 'react-router'
 import { ShapingProvider, useShaping } from './lib/store'
+import Consonants from './routes/Consonants'
 import Inspect from './routes/Inspect'
 import Morph from './routes/Morph'
 import Normalize from './routes/Normalize'
@@ -12,6 +13,7 @@ const TABS = [
   { to: '/pipeline', label: 'Pipeline', icon: Layers },
   { to: '/normalize', label: 'Normalize', icon: Wand2 },
   { to: '/inspect', label: 'Inspect', icon: Table2 },
+  { to: '/consonants', label: 'Table', icon: LayoutGrid },
 ]
 
 function Header() {
@@ -63,6 +65,7 @@ function Shell() {
             <Route path="/pipeline" element={<Pipeline />} />
             <Route path="/normalize" element={<Normalize />} />
             <Route path="/inspect" element={<Inspect />} />
+            <Route path="/consonants" element={<Consonants />} />
             <Route path="*" element={<Navigate to="/morph" replace />} />
           </Routes>
         ) : (

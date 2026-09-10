@@ -11,6 +11,7 @@ change shape and swap places as you type, and this app makes that easy to see.
 - **Pipeline**: go step by step through the work the text engine does.
 - **Normalize**: see how Khmer text gets put into the right order.
 - **Inspect**: see the raw numbers behind the text.
+- **Table**: the Khmer consonant chart. Click a letter to open it in Morph.
 
 ## Run it
 
