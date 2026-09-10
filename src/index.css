@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Google Sans";
+  src: url("/fonts/GoogleSans-Variable.ttf") format("truetype-variations");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: oklch(0.18 0 0);
+  --color-muted: oklch(0.52 0 0);
+  --color-faint: oklch(0.72 0 0);
+  --color-line: oklch(0.91 0 0);
+  --color-surface: oklch(0.985 0 0);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-white text-ink antialiased;
+}
+
+::selection {
+  @apply bg-ink text-white;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-line);
+  outline-offset: 2px;
+}
+
+input[type="range"] {
+  @apply h-1 w-full cursor-pointer appearance-none rounded-full bg-line;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  @apply size-3.5 appearance-none rounded-full bg-ink transition-transform;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  @apply scale-125;
+}
