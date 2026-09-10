@@ -148,7 +148,7 @@ export default function Morph() {
         <Panel title="Khmer consonants">
           <ConsonantTable onPick={setText} />
           <p className="mt-3 text-xs text-muted">
-            Each pair is the same sound in the two series, first series then second series.
+            Shaded pairs are the same sound in the two series, first series then second series.
           </p>
         </Panel>
       </div>
