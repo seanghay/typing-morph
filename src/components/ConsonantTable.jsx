@@ -1,27 +1,27 @@
-import clsx from 'clsx'
 import { CONSONANT_ROWS } from '../lib/consonants'
 
-export function ConsonantTable({ selected, onPick }) {
+const COLUMNS = 8
+
+export function ConsonantTable({ onPick }) {
+  const cells = CONSONANT_ROWS.flat()
+  const trailing = (COLUMNS - (cells.length % COLUMNS)) % COLUMNS
+
   return (
-    <div className="space-y-1">
-      {CONSONANT_ROWS.map((row) => (
-        <div key={row.map(([km]) => km).join('')} className="grid grid-cols-8 gap-1">
-          {row.map(([km, roman]) => (
-            <button
-              key={`${km}-${roman}`}
-              type="button"
-              onClick={() => onPick(km)}
-              className={clsx(
-                'flex flex-col items-center rounded border py-1 transition-colors',
-                selected === km ? 'border-ink' : 'border-line hover:border-faint',
-              )}
-            >
-              <span className="text-base leading-tight">{km}</span>
-              <span className="font-mono text-[9px] leading-none text-faint">{roman}</span>
-            </button>
-          ))}
-        </div>
-      ))}
+    <div className="overflow-hidden rounded-md border border-line bg-line">
+      <div className="grid grid-cols-8 gap-px">
+        {cells.map(([km, roman]) => (
+          <button
+            key={`${km}-${roman}`}
+            type="button"
+            onClick={() => onPick(km)}
+            className="flex flex-col items-center bg-white py-2 transition-colors hover:bg-surface"
+          >
+            <span className="text-xl leading-tight">{km}</span>
+            <span className="font-mono text-[10px] leading-none text-faint">{roman}</span>
+          </button>
+        ))}
+        {trailing > 0 && <div className="bg-white" style={{ gridColumn: `span ${trailing}` }} />}
+      </div>
     </div>
   )
 }
