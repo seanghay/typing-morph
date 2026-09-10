@@ -174,7 +174,14 @@ export function traceSteps(text, options = {}) {
       positioned: entry.t[0].ax != null,
       layout: stepGlyphs(entry.t),
     })
+    if (entry.m.includes('table GPOS')) break
   }
+
+  if (steps.length > 0) {
+    const last = steps[steps.length - 1]
+    steps[steps.length - 1] = { ...last, layout: layout(text, options), positioned: true }
+  }
+
   return steps
 }
 
